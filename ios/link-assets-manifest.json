@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Mallanna-Regular.ttf",
+      "sha1": "d93ef6600ea729bb0f3326f4b634b3fbd9211bf1"
+    },
+    {
+      "path": "src/assets/fonts/Ramabhadra-Regular.ttf",
+      "sha1": "d412f60c047f5446aa7db63f4c91a4185a077880"
+    }
+  ]
+}
