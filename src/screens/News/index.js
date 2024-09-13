@@ -1,14 +1,36 @@
-import {View, Text, FlatList} from 'react-native';
-import React from 'react';
-import NewsPost from '../../components/NewsPost';
-import {NewsData} from '../../assets/data/NewsData';
-
+import {View, Text, FlatList, SafeAreaView, StatusBar} from 'react-native';
+import React, { useState } from 'react';
+import {NewsData,EnglishNews} from '../../assets/data/NewsData';
+import Swiper from 'react-native-swiper';
+import styles from './styles';
+import NewsPostCard from '../../components/NewsPostCard';
 const NewsScreen = () => {
+  const [newsNow, setnewsNow] = useState(EnglishNews)
+  const onPageChnaged = (index, totalPages) => {
+    console.log('changes', index);
+    console.log('totalPages', totalPages);
+    if (index === totalPages - 3) {
+      setnewsNow(newsNow.concat(EnglishNews))
+    }
+  };
   return (
-    <>
-      {/* <NewsPost /> */}
-      <FlatList data={NewsData} renderItem={({item}) => <NewsPost News={item} />} pagingEnabled={true} />
-    </>
+    <SafeAreaView style={{flex:1}}>
+      <StatusBar barStyle={"light-content"} backgroundColor={"black"} />
+      <Swiper
+        showsButtons={false}
+        horizontal={false}
+        showsPagination={false}
+        bounces={true}
+        loop={false}
+        onIndexChanged={index => onPageChnaged(index, newsNow?.length)}>
+        {newsNow.map((item, index) => (
+          <NewsPostCard
+            News={item}
+            pageIndex={index}
+          />
+        ))}
+      </Swiper>
+    </SafeAreaView>
   );
 };
 

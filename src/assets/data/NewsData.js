@@ -29,5 +29,38 @@ export const NewsData = [
       "heading": "బాలీవుడ్ ప్రియ జోడికి చిక్కి సంచలన నెటిజన్లు మరో సాక్ష్యం!",
       "description": "బాలీవుడ్ లోని ఒక క్రియేటివ్ కామిక్ కళాకారుడు కంబల్ హీరోయిన్ తార అజిత్ కుమార్ మరియు అలియా భట్ట్ మీకు కొత్తగా ప్రేమిస్తున్నారా? ఇందులో ఏమి సత్యం ఉందంటే, ఇలాంటి అడ్వెంచర్స్ ఇందులో మిగిలిందా?"
     }
+  ];
+
+  export const EnglishNews = [
+    {
+      "id": 1,
+      "imageUrl": "https://www.theforage.com/blog/wp-content/uploads/2023/03/most-in-demand-jobs-1024x683.jpg",
+      "heading": "Old Plans Creating Jobs",
+      "description": "With this leave, humans naturally come into the creation of products, services, and jobs."
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://www.livemint.com/lm-img/img/2023/12/29/1600x900/Covid_cases_1703217497253_1703853507498.jpg",
+      "heading": "Are You Helping by Following COVID Protocols?",
+      "description": "By following COVID protocols, society is better equipped to safely distribute the impact of COVID-19 and regain what was lost. These protocols are essential in ensuring individual and social safety and in creating a commitment to a healthy society."
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://aahaaramonline.com/wp-content/uploads/2019/04/Andhra_Nuvvula_Chintapandu_Pulihora_1.jpg",
+      "heading": "Vijaya Pulihora Presentation",
+      "description": "The Vijaya Pulihora presentation gained fame for its heartfelt attempt on the silver screen. The unique response and community service activities have earned Vijaya Pulihora a special place."
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://qph.cf2.quoracdn.net/main-qimg-934efdd09d70def0265f1cb987dd1cb7-pjlq",
+      "heading": "Are You Providing and Prioritizing Local News?",
+      "description": "Pitch Bladers producers address social concerns, improve local news, and address situations. They produce content based on personal development, community support, and special efforts."
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://filmfare.wwmindia.com/content/2021/feb/8bollywoodfemalestarswhoturnedproducers101613624290.jpg",
+      "heading": "Bollywood's Favorite Pair Caught Again—Another Sensation for Netizens!",
+      "description": "Is a creative comic artist in Bollywood now in love with actress Ajith Kumar and Alia Bhatt? Is there any truth to this, or are these just more adventures?"
+    }
   ]
   
