@@ -1,5 +1,5 @@
-import {View, Text, FlatList, SafeAreaView, StatusBar} from 'react-native';
-import React, { useState } from 'react';
+import {View, Text, FlatList, SafeAreaView, StatusBar, Button} from 'react-native';
+import React, { useLayoutEffect, useState } from 'react';
 import {NewsData,EnglishNews} from '../../assets/data/NewsData';
 import Swiper from 'react-native-swiper';
 import styles from './styles';
@@ -13,6 +13,7 @@ const NewsScreen = () => {
       setnewsNow(newsNow.concat(EnglishNews))
     }
   };
+
   return (
     <SafeAreaView style={{flex:1}}>
       <StatusBar barStyle={"light-content"} backgroundColor={"black"} />

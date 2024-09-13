@@ -24,11 +24,14 @@ import styles from './styles';
 import { usedImages } from '../../utils/constants';
 // import { ShareIconOriginal } from '../../assets/svg';
 import ShareIconOriginal from '../../assets/svg/share-original.svg';
+import { useNavigation } from '@react-navigation/native';
 // import  ShareIcon  from '../../assets/svg/share-icon.svg';
 // import Svg from '../../assets/svg';
   // import CommentsList from './CommentsList';
   // import LocationSearch from './LocationSearch';
   const NewsPostCard = ({News,pageIndex}) => {
+
+    const navigation = useNavigation();
     // console.log("currentPage",currentPage);
     // console.log("totalPages",totalPages);
     
@@ -65,8 +68,9 @@ import ShareIconOriginal from '../../assets/svg/share-original.svg';
         setisDisliked(true);
       }
     };
+    
     return (
-      <Pressable style={styles.container} onPress={()=>console.warn("pressed")} key={pageIndex}>
+      <Pressable style={styles.container} onPress={()=>navigation.navigate("Settings")} key={pageIndex}>
         <Image
           source={{
             uri: News.imageUrl,
