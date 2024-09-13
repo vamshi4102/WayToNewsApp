@@ -24,14 +24,15 @@ const styles = StyleSheet.create({
   },
   heding: {
     fontSize: 18,
-    color: 'blue',
-    fontFamily: 'Ramabhadra-Regular',
+    color: colors.black,
+    fontFamily:  fonts.OpenSans700,
   },
   decription: {
-    color: 'gray',
+    color: colors.textColor,
     fontSize: 15,
-    marginVertical: 10,
-    fontFamily: 'Mallanna-Regular',
+    marginTop:5,
+    marginBottom: 10,
+    fontFamily: fonts.OpenSans500,
   },
   // news footer starts here
   newsFooter: {
@@ -45,6 +46,8 @@ const styles = StyleSheet.create({
     overlayColor: 'yellow',
     borderTopColor: colors.textColor,
     borderTopWidth: 0.5,
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
   FooterLeft: {
     flexDirection: 'row',
@@ -68,7 +71,30 @@ const styles = StyleSheet.create({
     fontFamily: fonts.OpenSans400,
     color: colors.textColor,
   },
-  FooterRight: {},
+  FooterRight: {
+    flexDirection:'row',
+    alignItems:'center',
+    gap:5,
+    justifyContent:'center'
+  },
+  bottomRightButton:{
+    padding:0,
+    borderRadius:25,
+    borderWidth:1,
+    borderColor:"#f3f3f3"
+  },
+  shareImage:{
+    width:22,
+    height:22,
+    margin:7
+  },
+  whatsappImage:{
+    width:34,
+    height:34,
+    borderRadius:22,
+    margin:2
+    
+  },
   //   ------footer
   footer: {
     justifyContent: 'flex-end',

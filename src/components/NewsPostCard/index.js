@@ -22,6 +22,8 @@ import {
   } from 'react-native-heroicons/outline';
 import styles from './styles';
 import { usedImages } from '../../utils/constants';
+// import { ShareIconOriginal } from '../../assets/svg';
+import ShareIconOriginal from '../../assets/svg/share-original.svg';
 // import  ShareIcon  from '../../assets/svg/share-icon.svg';
 // import Svg from '../../assets/svg';
   // import CommentsList from './CommentsList';
@@ -86,11 +88,14 @@ import { usedImages } from '../../utils/constants';
             </View>
           </View>
           <View style={styles.FooterRight}>
-            <TouchableOpacity>
-              <ShareIcon color={'red'} size={20} />
+            <TouchableOpacity style={styles.bottomRightButton}>
+              <Image source={require("../../assets/images/whatsapp-icon.png")} style={styles.whatsappImage} />
             </TouchableOpacity>
-            <TouchableOpacity>
-              <ShareIcon color={'red'} size={20} />
+            <TouchableOpacity style={styles.bottomRightButton}>
+              <Image source={require("../../assets/images/share-icons.png")} style={styles.shareImage} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.bottomRightButton}>
+              <Image source={require("../../assets/images/report-con.png")} style={styles.shareImage} />
             </TouchableOpacity>
           </View>
         </View>
