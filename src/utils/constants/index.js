@@ -34,6 +34,7 @@ const colors = {
 const usedImages = {
     userProfile:"https://one-link.in/youtube/profiles/user-1.png",
     userProfile2:"https://one-link.in/youtube/profiles/user-2.png",
+    userOnline:"https://cdn-icons-png.flaticon.com/512/2105/2105556.png"
 }
 
 export {fonts,colors,usedImages,fontSize};

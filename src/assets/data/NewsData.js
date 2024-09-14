@@ -63,4 +63,35 @@ export const NewsData = [
       "description": "Is a creative comic artist in Bollywood now in love with actress Ajith Kumar and Alia Bhatt? Is there any truth to this, or are these just more adventures?"
     }
   ]
-  
+  export const newsCategories = [
+    {
+      id: 1,
+      name: "World News",
+      date: "2024-09-01",
+      status: "Active",
+    },
+    {
+      id: 2,
+      name: "Technology",
+      date: "2024-09-02",
+      status: "Active",
+    },
+    {
+      id: 3,
+      name: "Health",
+      date: "2024-09-03",
+      status: "Inactive",
+    },
+    {
+      id: 4,
+      name: "Entertainment",
+      date: "2024-09-04",
+      status: "Active",
+    },
+    {
+      id: 5,
+      name: "Sports",
+      date: "2024-09-05",
+      status: "Inactive",
+    },
+  ];

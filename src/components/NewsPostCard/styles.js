@@ -53,10 +53,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  reporterImage: {
+  userImageContainer:{
     width: 40,
     height: 40,
     borderRadius: 45,
+  },
+  reporterImage: {
+    width: 35,
+    height: 35,
+    margin:5,
+    borderRadius: 45,
+    backgroundColor:'#f3f3f3',
+    resizeMode:"contain"
+
   },
   reporterBody: {
     marginLeft: 10,

@@ -26,7 +26,7 @@ const App = () => {
           }
         }}>
           <Stack.Screen name="Home" component={NewsScreen} options={{headerShown:false}} />
-          <Stack.Screen name="Settings" component={SettingsScreen} />
+          <Stack.Screen name="Settings" component={SettingsScreen} options={{animationEnabled:true,presentation:"modal"}} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

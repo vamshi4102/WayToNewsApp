@@ -29,7 +29,7 @@ import { useNavigation } from '@react-navigation/native';
 // import Svg from '../../assets/svg';
   // import CommentsList from './CommentsList';
   // import LocationSearch from './LocationSearch';
-  const NewsPostCard = ({News,pageIndex}) => {
+  const NewsPostCard = ({News,pageIndex,modalVisible,setModalVisible}) => {
 
     const navigation = useNavigation();
     // console.log("currentPage",currentPage);
@@ -41,7 +41,7 @@ import { useNavigation } from '@react-navigation/native';
     const [DisLikeCount, setDisLikeCount] = useState(0);
     const [CommentsCount, setCommentsCount] = useState(0);
   
-    const [modalVisible, setModalVisible] = useState(false);
+    // const [modalVisible, setModalVisible] = useState(false);
     const [LocationModal, setLocationModal] = useState(false)
     
   
@@ -70,7 +70,7 @@ import { useNavigation } from '@react-navigation/native';
     };
     
     return (
-      <Pressable style={styles.container} onPress={()=>navigation.navigate("Settings")} key={pageIndex}>
+      <Pressable style={styles.container} onPress={()=>setModalVisible(!modalVisible)} key={pageIndex}>
         <Image
           source={{
             uri: News.imageUrl,
@@ -85,7 +85,10 @@ import { useNavigation } from '@react-navigation/native';
         </View>
         <View style={styles.newsFooter}>
           <View style={styles.FooterLeft}>
-            <Image style={styles.reporterImage} source={{uri:usedImages.userProfile}}/>
+            <View style={styles.userImageContainer}>
+            <Image style={styles.reporterImage} source={{uri:usedImages.userOnline}}/>
+            </View>
+            
             <View style={styles.reporterBody}>
               <Text style={styles.reporterName}>Vamshi krisha</Text>
               <Text style={styles.newsTime}>10 min ago</Text>

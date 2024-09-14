@@ -4,8 +4,10 @@ import {NewsData,EnglishNews} from '../../assets/data/NewsData';
 import Swiper from 'react-native-swiper';
 import styles from './styles';
 import NewsPostCard from '../../components/NewsPostCard';
+import ButtonMenu from '../../components/BottomMenu';
 const NewsScreen = () => {
   const [newsNow, setnewsNow] = useState(EnglishNews)
+  const [bottomMenu, setBottomMenu] = useState(true);
   const onPageChnaged = (index, totalPages) => {
     console.log('changes', index);
     console.log('totalPages', totalPages);
@@ -28,9 +30,15 @@ const NewsScreen = () => {
           <NewsPostCard
             News={item}
             pageIndex={index}
+            modalVisible={bottomMenu}
+            setModalVisible={setBottomMenu}
           />
         ))}
       </Swiper>
+      <ButtonMenu 
+        modalVisible={bottomMenu}
+        setModalVisible={setBottomMenu}
+      />
     </SafeAreaView>
   );
 };
