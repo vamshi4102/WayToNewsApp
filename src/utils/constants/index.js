@@ -28,7 +28,8 @@ const colors = {
     primaryColor:"#f4f4f2",
     textColor:"#ddd",
     black:"#000",
-    white:"#fff"
+    white:"#fff",
+    blue:"#4285F4"
 }
 
 const usedImages = {

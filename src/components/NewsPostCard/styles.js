@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    height: DeviceHeight,
   },
   image: {
     width: DeviceWidth,
@@ -31,8 +32,19 @@ const styles = StyleSheet.create({
     color: colors.textColor,
     fontSize: 15,
     marginTop:5,
-    marginBottom: 10,
-    fontFamily: fonts.OpenSans500,
+    fontFamily: fonts.OpenSans400,
+  },
+  link:{
+    flexDirection:'row',
+    alignItems:'center',
+    gap:5,
+    marginTop:5
+  },
+  websiteLink:{
+    color: colors.blue,
+    fontSize: 15,
+    // marginBottom: 10,
+    fontFamily: fonts.OpenSans400,
   },
   // news footer starts here
   newsFooter: {

@@ -1,24 +1,47 @@
-import {View, Text, Modal, Pressable, Image, ScrollView,TouchableOpacity} from 'react-native';
-import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  Modal,
+  Pressable,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import {Cog6ToothIcon} from 'react-native-heroicons/outline';
 import {colors} from '../../utils/constants';
 import {newsCategories} from '../../assets/data/NewsData';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {getCategoriesList, getNewsList} from '../../utils/redux/actions/common-actions';
+import {setCurrentCategoryId} from '../../utils/redux/reducer/commonSlice';
 const ButtonMenu = props => {
   const {modalVisible, setModalVisible} = props;
-  const [activetab, setactivetab] = useState(2);
+
+  const dispatch = useDispatch();
+  const CurrentCategoryId = useSelector(
+    state => state.common.currentCategoryId,
+  );
+  const CategoriesList = useSelector(state => state.common.categoriesList);
+  const NewsList = useSelector(state => state.common.newsList);
+
   const navigation = useNavigation();
 
-  const selectCategory = (id) => { 
-    console.warn("id",id);
-    setactivetab(id);
-   }
+  const selectCategory = id => {
+    dispatch(setCurrentCategoryId(id));
+    dispatch(getNewsList(1, CurrentCategoryId, NewsList));
+  };
 
-   const navigateSettings = () => { 
+  const navigateSettings = () => {
     setModalVisible(false);
-    navigation.navigate('Settings')
-    }
+    navigation.navigate('Settings');
+  };
+
+  useEffect(() => {
+    dispatch(getCategoriesList());
+  }, []);
+
   return (
     <Modal
       animationType="fade"
@@ -46,19 +69,20 @@ const ButtonMenu = props => {
               horizontal
               contentContainerStyle={styles.scrollView}
               showsHorizontalScrollIndicator={false}>
-              {newsCategories.map((item, index) => (
+              {CategoriesList.map((item, index) => (
                 <TouchableOpacity
-                  key={item?.id}
+                  key={item?.category_id}
                   style={[
                     styles.category,
-                    item?.id === activetab && styles.ActiveCategory,
+                    item?.category_id === CurrentCategoryId &&
+                      styles.ActiveCategory,
                   ]}
-                  onPress={()=>selectCategory(item?.id)}
-                  >
+                  onPress={() => selectCategory(item?.category_id)}>
                   <Text
                     style={[
                       styles.categoryText,
-                      item?.id === activetab && styles.ActiveCategoryText,
+                      item?.category_id === CurrentCategoryId &&
+                        styles.ActiveCategoryText,
                     ]}>
                     {item?.name}
                   </Text>
@@ -69,7 +93,8 @@ const ButtonMenu = props => {
         </View>
         <Pressable
           style={styles.remainingSpace}
-          onPress={() => setModalVisible(false)} />
+          onPress={() => setModalVisible(false)}
+        />
       </View>
     </Modal>
   );

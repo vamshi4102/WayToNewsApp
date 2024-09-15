@@ -5,30 +5,43 @@ import SettingsScreen from './src/screens/Settings';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import { colors, fonts, fontSize } from './src/utils/constants';
+import {colors, fonts, fontSize} from './src/utils/constants';
+import { store } from './src/utils/redux/store';
+import { Provider } from 'react-redux';
 
 const Stack = createStackNavigator();
 const App = () => {
   return (
     <>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{
-          headerShown:true,
-          headerTitleStyle:{
-            fontFamily:fonts.OpenSans500,
-            fontSize:fontSize.fontSubHeding
-          },
-          headerStyle:{
-            borderBottomWidth:1,
-            borderBottomColor:'#f3f3f3',
-            elevation:0,
-            shadowOpacity:0
-          }
-        }}>
-          <Stack.Screen name="Home" component={NewsScreen} options={{headerShown:false}} />
-          <Stack.Screen name="Settings" component={SettingsScreen} options={{animationEnabled:true,presentation:"modal"}} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: true,
+              headerTitleStyle: {
+                fontFamily: fonts.OpenSans500,
+                fontSize: fontSize.fontSubHeding,
+              },
+              headerStyle: {
+                borderBottomWidth: 1,
+                borderBottomColor: '#f3f3f3',
+                elevation: 0,
+                shadowOpacity: 0,
+              },
+            }}>
+            <Stack.Screen
+              name="Home"
+              component={NewsScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{animationEnabled: true, presentation: 'modal'}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </>
   );
 };
