@@ -11,6 +11,7 @@ const initialState = {
   categoriesList: [],
   currentCategoryId: 0,
   settingsPage: [],
+  reportsList:[]
 };
 
 export const commonReducer = createSlice({
@@ -32,6 +33,9 @@ export const commonReducer = createSlice({
     setSettingsPage(state, action) {
       state.settingsPage = action.payload;
     },
+    setReportsList(state, action) {
+      state.reportsList = action.payload;
+    },
   },
 });
 
@@ -41,6 +45,7 @@ export const {
   setCategoriesList,
   setCurrentCategoryId,
   setSettingsPage,
+  setReportsList
 } = commonReducer.actions;
 
 export default commonReducer.reducer;

@@ -13,8 +13,12 @@ import styles from './styles';
 import NewsPostCard from '../../components/NewsPostCard';
 import ButtonMenu from '../../components/BottomMenu';
 import {useDispatch, useSelector} from 'react-redux';
-import {getNewsList} from '../../utils/redux/actions/common-actions';
+import {
+  getNewsList,
+  getReportsList,
+} from '../../utils/redux/actions/common-actions';
 import {useIsFocused} from '@react-navigation/native';
+import ReportNews from '../../components/ReportNews';
 const NewsScreen = () => {
   const [currentPage, setcurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -27,15 +31,28 @@ const NewsScreen = () => {
   const isFocused = useIsFocused();
   const [newsNow, setnewsNow] = useState(EnglishNews);
   const [bottomMenu, setBottomMenu] = useState(true);
+  const [showReports, setshowReports] = useState(false);
+  const [reportPostId, setreportPostId] = useState('');
 
-  const onPageChnaged = (index, totalPages) => {
-    // dispatch(getNewsList(currentPage, CurrentCategoryId));
-    console.log('changes', index);
-    if(NewsList[0]?.total_pages < currentPage){
-      dispatch(getNewsList(currentPage+1, CurrentCategoryId, NewsList));
-      setcurrentPage(currentPage+1)
+  const onPageChnaged = (index, totalPages, totalLength) => {
+    if (totalPages > currentPage) {
+      console.warn('if');
+    } else {
+      console.warn('else');
     }
-    return;
+    // dispatch(getNewsList(currentPage, CurrentCategoryId));
+    // console.warn("e",index);
+
+    // console.log('changes', NewsList[0]?.total_pages);
+    // dispatch(getNewsList(currentPage+1, CurrentCategoryId, NewsList));
+    // if(NewsList[0]?.total_pages <= currentPage){
+    //   setcurrentPage((prev)=>prev+1);
+    // }
+    // else{
+    //   console.log("else-",index);
+    //   console.log('else-changes', NewsList[0]?.total_pages);
+    //   return;
+    // }
     // console.log('totalPages', totalPages);
     // if (index === totalPages - 1) {
     //   setcurrentPage(currentPage+1);
@@ -43,13 +60,17 @@ const NewsScreen = () => {
     // }
   };
 
-
   useEffect(() => {
+    console.warn('page--', currentPage);
     dispatch(getNewsList(currentPage, CurrentCategoryId, NewsList));
+    dispatch(getReportsList());
   }, []);
 
-  console.log("NewsList",NewsList);
-  
+  const reportThisNews = id => {
+    console.warn(id);
+  };
+
+  console.log('NewsList', NewsList);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -63,7 +84,7 @@ const NewsScreen = () => {
             bounces={true}
             loop={false}
             onIndexChanged={index =>
-              onPageChnaged(index, NewsList.length)
+              onPageChnaged(index, NewsList.total_pages, NewsList.length)
             }>
             {NewsList.map((item, index) => (
               <NewsPostCard
@@ -71,6 +92,8 @@ const NewsScreen = () => {
                 pageIndex={index}
                 modalVisible={bottomMenu}
                 setModalVisible={setBottomMenu}
+                showReports={showReports}
+                setshowReports={setshowReports}
               />
             ))}
           </Swiper>
@@ -80,7 +103,15 @@ const NewsScreen = () => {
           <Text>no list</Text>
         </View>
       )}
-      <ButtonMenu modalVisible={bottomMenu} setModalVisible={setBottomMenu} />
+      <ButtonMenu
+        modalVisible={bottomMenu}
+        setModalVisible={setBottomMenu}
+      />
+      <ReportNews
+        modalVisible={showReports}
+        setModalVisible={setshowReports}
+        reportThisNews={reportThisNews}
+      />
     </SafeAreaView>
   );
 };

@@ -26,21 +26,22 @@ const styles = StyleSheet.create({
   heding: {
     fontSize: 18,
     color: colors.black,
-    fontFamily:  fonts.OpenSans700,
+    fontFamily: fonts.OpenSans600,
+    lineHeight: 20,
   },
   decription: {
     color: colors.textColor,
     fontSize: 15,
-    marginTop:5,
+    marginTop: 5,
     fontFamily: fonts.OpenSans400,
   },
-  link:{
-    flexDirection:'row',
-    alignItems:'center',
-    gap:5,
-    marginTop:5
+  link: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginTop: 5,
   },
-  websiteLink:{
+  websiteLink: {
     color: colors.blue,
     fontSize: 15,
     // marginBottom: 10,
@@ -58,14 +59,14 @@ const styles = StyleSheet.create({
     overlayColor: 'yellow',
     borderTopColor: colors.textColor,
     borderTopWidth: 0.5,
-    flexDirection:'row',
-    justifyContent:'space-between'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   FooterLeft: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  userImageContainer:{
+  userImageContainer: {
     width: 40,
     height: 40,
     borderRadius: 45,
@@ -73,11 +74,10 @@ const styles = StyleSheet.create({
   reporterImage: {
     width: 35,
     height: 35,
-    margin:5,
+    margin: 5,
     borderRadius: 45,
-    backgroundColor:'#f3f3f3',
-    resizeMode:"contain"
-
+    backgroundColor: '#f3f3f3',
+    resizeMode: 'contain',
   },
   reporterBody: {
     marginLeft: 10,
@@ -93,28 +93,27 @@ const styles = StyleSheet.create({
     color: colors.textColor,
   },
   FooterRight: {
-    flexDirection:'row',
-    alignItems:'center',
-    gap:5,
-    justifyContent:'center'
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    justifyContent: 'center',
   },
-  bottomRightButton:{
-    padding:0,
-    borderRadius:25,
-    borderWidth:1,
-    borderColor:"#f3f3f3"
+  bottomRightButton: {
+    padding: 0,
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#f3f3f3',
   },
-  shareImage:{
-    width:22,
-    height:22,
-    margin:7
+  shareImage: {
+    width: 22,
+    height: 22,
+    margin: 7,
   },
-  whatsappImage:{
-    width:34,
-    height:34,
-    borderRadius:22,
-    margin:2
-    
+  whatsappImage: {
+    width: 34,
+    height: 34,
+    borderRadius: 22,
+    margin: 2,
   },
   //   ------footer
   footer: {
@@ -153,6 +152,21 @@ const styles = StyleSheet.create({
   right_btns: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  downloadSection: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor:colors.black,
+    paddingHorizontal:25
+  },
+  brandLogo: {
+    height: 40,
+    width: 100,
+  },
+  downlodLogo: {
+    height: 40,
+    width: 100,
   },
 });
 
