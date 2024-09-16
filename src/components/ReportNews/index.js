@@ -19,7 +19,7 @@ const ReportNews = ({modalVisible, setModalVisible,reportThisNews}) => {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>Hello World!</Text>
+            <Text style={styles.headerTitle}>Report Article</Text>
             <Pressable style={styles.closeBtn} onPress={() => setModalVisible(!modalVisible)}>
                 <XMarkIcon size={18} color={colors.black} />
             </Pressable>

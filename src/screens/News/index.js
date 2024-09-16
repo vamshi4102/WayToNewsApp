@@ -19,6 +19,7 @@ import {
 } from '../../utils/redux/actions/common-actions';
 import {useIsFocused} from '@react-navigation/native';
 import ReportNews from '../../components/ReportNews';
+import { showErrorToast, showSuccessToast } from '../../utils/constants/app-alerts';
 const NewsScreen = () => {
   const [currentPage, setcurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -29,9 +30,10 @@ const NewsScreen = () => {
   const NewsList = useSelector(state => state.common.newsList);
 
   const isFocused = useIsFocused();
-  const [newsNow, setnewsNow] = useState(EnglishNews);
   const [bottomMenu, setBottomMenu] = useState(true);
   const [showReports, setshowReports] = useState(false);
+  const [reportingPost, setReportingPost] = useState('');
+  const [newsNow, setnewsNow] = useState(EnglishNews);
   const [reportPostId, setreportPostId] = useState('');
 
   const onPageChnaged = (index, totalPages, totalLength) => {
@@ -67,10 +69,10 @@ const NewsScreen = () => {
   }, []);
 
   const reportThisNews = id => {
-    console.warn(id);
+    showErrorToast("Logged is successfully");
+    console.log('report_id', id);
+    // console.log('post--id', reportPostId);
   };
-
-  console.log('NewsList', NewsList);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -94,6 +96,8 @@ const NewsScreen = () => {
                 setModalVisible={setBottomMenu}
                 showReports={showReports}
                 setshowReports={setshowReports}
+                reportingPost={reportPostId}
+                setReportingPost={setreportPostId}
               />
             ))}
           </Swiper>
@@ -103,10 +107,7 @@ const NewsScreen = () => {
           <Text>no list</Text>
         </View>
       )}
-      <ButtonMenu
-        modalVisible={bottomMenu}
-        setModalVisible={setBottomMenu}
-      />
+      <ButtonMenu modalVisible={bottomMenu} setModalVisible={setBottomMenu} />
       <ReportNews
         modalVisible={showReports}
         setModalVisible={setshowReports}

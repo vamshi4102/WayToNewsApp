@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 reportText:{
     fontFamily: fonts.OpenSans400,
-    color: colors.black,
+    color: 'red',
     fontSize:fontSize.fontBody
 },
 });

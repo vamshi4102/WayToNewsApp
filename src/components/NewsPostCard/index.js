@@ -31,11 +31,21 @@ import ViewShot from 'react-native-view-shot';
 import Share from 'react-native-share';
 import {captureRef} from 'react-native-view-shot';
 import RNFS from 'react-native-fs';
+import { showErrorToast } from '../../utils/constants/app-alerts';
 // import  ShareIcon  from '../../assets/svg/share-icon.svg';
 // import Svg from '../../assets/svg';
 // import CommentsList from './CommentsList';
 // import LocationSearch from './LocationSearch';
-const NewsPostCard = ({News, pageIndex, modalVisible, setModalVisible,showReports,setshowReports}) => {
+const NewsPostCard = ({
+  News,
+  pageIndex,
+  modalVisible,
+  setModalVisible,
+  showReports,
+  setshowReports,
+  reportingPost,
+  setReportingPost,
+}) => {
   const navigation = useNavigation();
   const viewShotRef = useRef(null);
   // console.log("currentPage",currentPage);
@@ -43,7 +53,6 @@ const NewsPostCard = ({News, pageIndex, modalVisible, setModalVisible,showReport
 
   const [isWhatsappShown, setisWhatsappShown] = useState(true);
   const [showDownload, setshowDownload] = useState(false);
-
 
   const [isLiked, setisLiked] = useState(false);
   const [LikeCount, setLikeCount] = useState(0);
@@ -79,18 +88,18 @@ const NewsPostCard = ({News, pageIndex, modalVisible, setModalVisible,showReport
   };
   const captureAndShare = async postId => {
     setshowDownload(true);
-    setTimeout(async() => {
+    setTimeout(async () => {
       try {
         // Capture the view and get the image URI
         const uri = await captureRef(viewShotRef, {
           format: 'png',
           quality: 0.8,
         });
-  
+
         // Save the image temporarily for sharing
         const path = `${RNFS.DocumentDirectoryPath}/${postId}.png`;
         await RNFS.moveFile(uri, path);
-  
+
         // Share the image with a message
         await Share.open({
           url: `file://${path}`,
@@ -136,6 +145,11 @@ const NewsPostCard = ({News, pageIndex, modalVisible, setModalVisible,showReport
       console.error('Error checking WhatsApp installation:', error);
     }
   };
+
+  const showReportType = (id) => { 
+    setshowReports(!showReports);
+    setReportingPost(id);
+   }
 
   return (
     <ViewShot
@@ -213,7 +227,7 @@ const NewsPostCard = ({News, pageIndex, modalVisible, setModalVisible,showReport
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.bottomRightButton}
-              onPress={() => setshowReports(!showReports)}>
+              onPress={() => showReportType(News?.post_url)}>
               <Image
                 source={require('../../assets/images/report-con.png')}
                 style={styles.shareImage}
