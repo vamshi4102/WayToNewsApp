@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     paddingVertical:10,
     width: '100%',
     justifyContent: 'center',
-    zIndex:1,
+    // zIndex:1,
   },
   remainingSpace: {
     // backgroundColor:'red',

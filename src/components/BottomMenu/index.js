@@ -42,11 +42,12 @@ const ButtonMenu = props => {
     dispatch(getCategoriesList());
   }, []);
 
+  const ispageLoading = useSelector((state)=>state.common.isLoading);
   return (
     <Modal
       animationType="fade"
       transparent={true}
-      visible={modalVisible}
+      visible={ispageLoading.visible?false:modalVisible}
       onRequestClose={() => {
         setModalVisible(!modalVisible);
       }}>

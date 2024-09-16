@@ -7,15 +7,17 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {colors, fonts, fontSize} from './src/utils/constants';
 import {store} from './src/utils/redux/store';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import SplashScreen from './src/screens/SplashScreen';
 import {
   getFromSecureStorage,
   saveToSecureStorage,
 } from './src/utils/constants/app-storage';
 import {generateRandomString} from './src/utils/functions';
-import { showSuccessToast } from './src/utils/constants/app-alerts';
+import {showSuccessToast} from './src/utils/constants/app-alerts';
 import FlashMessage from 'react-native-flash-message';
+import FullPageLoader from "./src/components/pageLoader";
+import Navigation from "./src/utils/navigation/";
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -45,34 +47,7 @@ const App = () => {
         <SplashScreen />
       ) : (
         <Provider store={store}>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{
-                headerShown: true,
-                headerTitleStyle: {
-                  fontFamily: fonts.OpenSans500,
-                  fontSize: fontSize.fontSubHeding,
-                },
-                headerStyle: {
-                  borderBottomWidth: 1,
-                  borderBottomColor: '#f3f3f3',
-                  elevation: 0,
-                  shadowOpacity: 0,
-                },
-              }}>
-              <Stack.Screen
-                name="Home"
-                component={NewsScreen}
-                options={{headerShown: false}}
-              />
-              <Stack.Screen
-                name="Settings"
-                component={SettingsScreen}
-                options={{animationEnabled: true, presentation: 'modal'}}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-          <FlashMessage position="top" />
+            <Navigation />
         </Provider>
       )}
     </>

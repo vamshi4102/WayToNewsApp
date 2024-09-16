@@ -16,10 +16,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   getNewsList,
   getReportsList,
+  postThisNewsReport,
 } from '../../utils/redux/actions/common-actions';
 import {useIsFocused} from '@react-navigation/native';
 import ReportNews from '../../components/ReportNews';
-import { showErrorToast, showSuccessToast } from '../../utils/constants/app-alerts';
+import { getFromSecureStorage } from '../../utils/constants/app-storage';
 const NewsScreen = () => {
   const [currentPage, setcurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -68,9 +69,18 @@ const NewsScreen = () => {
     dispatch(getReportsList());
   }, []);
 
-  const reportThisNews = id => {
-    showErrorToast("Logged is successfully");
+  const reportThisNews = async(id) => {
     console.log('report_id', id);
+
+    let getUserId = null;
+    getUserId = await getFromSecureStorage('UserId');
+    const payload = {
+      reportNews:"from-app",
+      userId:getUserId,
+      newsId:reportPostId,
+      reportId:id
+    }
+    dispatch(postThisNewsReport(payload));
     // console.log('post--id', reportPostId);
   };
 

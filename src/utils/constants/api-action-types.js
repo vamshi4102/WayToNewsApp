@@ -4,6 +4,7 @@ import axios from 'axios';
 export async function postAPI(url, payload) {
   try {
     const result = await axios.post(url, payload);
+    console.log("result--postAPI",result);
     return result;
   } catch (err) {
     if (err.response) {
