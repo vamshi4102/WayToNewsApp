@@ -15,7 +15,7 @@ import {newsCategories} from '../../assets/data/NewsData';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCategoriesList, getNewsList} from '../../utils/redux/actions/common-actions';
-import {setCurrentCategoryId} from '../../utils/redux/reducer/commonSlice';
+import {setCurrentCategoryId, setNewsList} from '../../utils/redux/reducer/commonSlice';
 const ButtonMenu = props => {
   const {modalVisible, setModalVisible} = props;
 
@@ -30,7 +30,8 @@ const ButtonMenu = props => {
 
   const selectCategory = id => {
     dispatch(setCurrentCategoryId(id));
-    dispatch(getNewsList(1, CurrentCategoryId, NewsList));
+    dispatch(setNewsList([]));
+    dispatch(getNewsList(1, id, []));
   };
 
   const navigateSettings = () => {

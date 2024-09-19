@@ -103,7 +103,7 @@ const NewsPostCard = ({
         // Share the image with a message
         await Share.open({
           url: `file://${path}`,
-          message: 'Check out this cool screenshot!',
+          message: `Check this article: https://newscard.co/post/${postId}`,
         });
         setshowDownload(false);
       } catch (error) {
@@ -131,7 +131,7 @@ const NewsPostCard = ({
           const shareOptions = {
             url: `file://${path}`,
             social: Share.Social.WHATSAPP,
-            message: 'Check out this screenshot!',
+            message: `Check this article: https://newscard.co/post/${postId}`,
           };
           await Share.shareSingle(shareOptions);
         } catch (error) {
@@ -207,7 +207,7 @@ const NewsPostCard = ({
             </View>
           </View>
           <View style={styles.FooterRight}>
-            {isWhatsappShown && (
+            {/* {isWhatsappShown && (
               <TouchableOpacity
                 style={styles.bottomRightButton}
                 onPress={() => shareOnWhatsapp()}>
@@ -216,7 +216,7 @@ const NewsPostCard = ({
                   style={styles.whatsappImage}
                 />
               </TouchableOpacity>
-            )}
+            )} */}
             <TouchableOpacity
               style={styles.bottomRightButton}
               onPress={() => captureAndShare(News?.post_url)}>

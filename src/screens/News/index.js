@@ -21,6 +21,7 @@ import {
 import {useIsFocused} from '@react-navigation/native';
 import ReportNews from '../../components/ReportNews';
 import { getFromSecureStorage } from '../../utils/constants/app-storage';
+import NoArticles from './NoArticles';
 const NewsScreen = () => {
   const [currentPage, setcurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -38,11 +39,11 @@ const NewsScreen = () => {
   const [reportPostId, setreportPostId] = useState('');
 
   const onPageChnaged = (index, totalPages, totalLength) => {
-    if (totalPages > currentPage) {
-      console.warn('if');
-    } else {
-      console.warn('else');
-    }
+    // if (totalPages > currentPage) {
+    //   console.warn('if');
+    // } else {
+    //   console.warn('else');
+    // }
     // dispatch(getNewsList(currentPage, CurrentCategoryId));
     // console.warn("e",index);
 
@@ -83,11 +84,13 @@ const NewsScreen = () => {
     dispatch(postThisNewsReport(payload));
     // console.log('post--id', reportPostId);
   };
+  console.log("NewsList?.length",NewsList);
+  
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
-      {NewsList.length ? (
+      {NewsList?.length > 0 && NewsList !== "NO_DATA_FOUND"? (
         <>
           <Swiper
             showsButtons={false}
@@ -96,9 +99,9 @@ const NewsScreen = () => {
             bounces={true}
             loop={false}
             onIndexChanged={index =>
-              onPageChnaged(index, NewsList.total_pages, NewsList.length)
+              onPageChnaged(index, NewsList?.total_pages, NewsList?.length)
             }>
-            {NewsList.map((item, index) => (
+            {NewsList?.map((item, index) => (
               <NewsPostCard
                 News={item}
                 pageIndex={index}
@@ -113,9 +116,7 @@ const NewsScreen = () => {
           </Swiper>
         </>
       ) : (
-        <View>
-          <Text>no list</Text>
-        </View>
+       <NoArticles modalVisible={bottomMenu} setModalVisible={setBottomMenu}/>
       )}
       <ButtonMenu modalVisible={bottomMenu} setModalVisible={setBottomMenu} />
       <ReportNews

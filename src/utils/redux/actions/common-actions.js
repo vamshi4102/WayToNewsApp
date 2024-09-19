@@ -26,29 +26,43 @@ export const getCategoriesList = () => async dispatch => {
   }
 };
 
-export const getNewsList = (page, categoryId, NewsList) => async dispatch => {
+export const getNewsList = (page, categoryId) => async dispatch => {
+  dispatch(setLoading({ visible: true, heading: "Getting articles", body: "Please wait while processing" }));
   try {
     await getAPI(
       `${apiUrls.postsApi}?action=get-app-list&page=${page}&category-id=${categoryId}`,
       {},
     )
       .then(response => {
+        dispatch(setLoading({ visible: false, heading: "Posting report", body: "Please wait while processing" }));
         // console.log("responseresponse-old",NewsList);
-        // console.log("responseresponse-old-res",response?.data);
+        console.log("responseresponse-old-res",response);
         // console.log("responseresponse-page",page);
         // console.log("responseresponse-categoryId",categoryId);
         // console.warn("page",page);
-        if (page >= 1) {
-          if (response?.data !== 'NO_MORE_RECORDS_FOUND') {
-            dispatch(setNewsList(NewsList.concat(response?.data)));
-          } else {
-            return;
-          }
-        } else {
-          if (response?.data !== 'NO_MORE_RECORDS_FOUND') {
-            dispatch(setNewsList(response?.data));
-          }
+        if (response?.data !== "NO_DATA_FOUND") {
+          dispatch(setNewsList(response?.data));
+          // dispatch(setNewsList(NewsList.concat(response?.data)));
         }
+        else if(response?.data !== "NO_MORE_RECORDS_FOUND"){
+          dispatch(setNewsList(response?.data));
+        }
+        else {
+          dispatch(setNewsList([]));
+        }
+      
+        // if (page >= 1) {
+        //   if (response?.data !== 'NO_MORE_RECORDS_FOUND' || response?.data !== 'NO_MORE_RECORDS_FOUND') {
+        //     dispatch(setNewsList(response?.data));
+        //     dispatch(setNewsList(NewsList.concat(response?.data)));
+        //   } else {
+        //     return;
+        //   }
+        // } else {
+        //   if (response?.data !== 'NO_MORE_RECORDS_FOUND') {
+        //     dispatch(setNewsList(response?.data));
+        //   }
+        // }
       })
       .catch(error => {
         console.error('Error fetching user:', error);
