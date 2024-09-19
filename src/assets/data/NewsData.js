@@ -122,3 +122,13 @@ export const categoryAllObject = {
   added_by: '1',
   created_date: '2024-09-11 20:20:55',
 };
+
+export const emptyPageContent = {
+  page_id: "10",
+  page_name: "",
+  heding: "page content is not updated Yet, Will update it shortly",
+  sub_heding: '',
+  content: '',
+  created_date: "2024-09-11 0:21:16",
+  added_by: "2",
+};

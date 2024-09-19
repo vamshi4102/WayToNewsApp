@@ -169,7 +169,7 @@ const NewsPostCard = ({
         {showDownload && (
           <View style={styles.downloadSection}>
             <Image
-              source={require('../../assets/images/app-logo-transparent.png')}
+              source={require('../../assets/images/logo-full-image.png')}
               style={styles.brandLogo}
             />
             <Image

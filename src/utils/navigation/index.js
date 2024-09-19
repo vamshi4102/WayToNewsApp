@@ -10,6 +10,7 @@ import SettingsScreen from '../../screens/Settings';
 import FullPageLoader from '../../components/pageLoader';
 import FlashMessage from 'react-native-flash-message';
 import { useSelector } from 'react-redux';
+import PageDetails from '../../screens/PageDetails';
 const Navigation = () => {
   const Stack = createStackNavigator();
   const ispageLoading = useSelector((state)=>state.common.isLoading);
@@ -39,6 +40,11 @@ const Navigation = () => {
             name="Settings"
             component={SettingsScreen}
             options={{animationEnabled: true, presentation: 'modal'}}
+          />
+          <Stack.Screen
+            name="PageDetails"
+            component={PageDetails}
+            options={{animationEnabled: true}}
           />
         </Stack.Navigator>
       </NavigationContainer>
