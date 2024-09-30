@@ -1,4 +1,4 @@
-package com.waytonewsapp
+package android.newscard.co
 
 import android.app.Application
 import com.facebook.react.PackageList
