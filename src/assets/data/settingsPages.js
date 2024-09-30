@@ -6,7 +6,7 @@ const settingsPages = [
     { title: "Terms and Conditions", path: "terms-and-conditions" },
     { title: "Privacy Policy", path: "privacy-policy" },
     { title: "Cookie Policy", path: "cookie-policy" },
-    { title: "Give Us Feedback", path: "feedback" }
+    // { title: "Give Us Feedback", path: "feedback" }
   ];  
 
   export {settingsPages};

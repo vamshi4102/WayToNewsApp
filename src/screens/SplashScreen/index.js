@@ -6,9 +6,9 @@ import { colors } from '../../utils/constants';
 const SplashScreen = () => {
   return (
     <View style={styles.container}>
-        <StatusBar backgroundColor={colors.brandColor} barStyle={"light-content"} />
+        <StatusBar backgroundColor={colors.white} barStyle={"light-content"} />
       <Image
-        source={require('../../assets/images/logo-full-image.png')}
+        source={require('../../assets/images/news-card-logo-full-black.png')}
         style={styles.brandLogo}
       />
     </View>

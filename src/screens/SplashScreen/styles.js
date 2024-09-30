@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.brandColor,
+    backgroundColor: colors.white,
   },
   brandLogo: {
     height: height * 0.10,

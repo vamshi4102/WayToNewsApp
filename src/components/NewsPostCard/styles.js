@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   decription: {
-    color: colors.textColor,
+    color: 'gray',
     fontSize: 15,
     marginTop: 5,
     fontFamily: fonts.OpenSans400,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   brandLogo: {
     height: 40,
-    width: 100,
+    width: 120,
   },
   downlodLogo: {
     height: 40,

@@ -49,28 +49,28 @@ const SettingsScreen = () => {
             />
             <Text style={styles.heading}>Follow Us on social media</Text>
             <View style={styles.socials}>
-              <TouchableOpacity style={styles.socialButton}>
+              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl(" https://www.instagram.com/newscard_app?igsh=aHk5dzF1cWs3MWo2")}>
                 <Image
                   source={require('../../assets/images/instagram.png')}
                   style={styles.socialIcon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton}>
+              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl("https://youtube.com/@newscardapp?si=rxGvwjeMBLGDEYuA")}>
                 <Image
                   source={require('../../assets/images/youtube.png')}
                   style={styles.socialIcon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton}>
+              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl("https://t.me/boost/newscardapp")}>
                 <Image
                   source={require('../../assets/images/telegram.png')}
                   style={styles.socialIcon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton}>
+              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl("https://x.com/Newscard_App?t=R_GEYGgwvPoTadQDzf_paA&s=08")}>
                 <Image
-                  source={require('../../assets/images/facebook.png')}
-                  style={styles.socialIcon}
+                  source={require('../../assets/images/x-logo-final.png')}
+                  style={[styles.socialIcon,{borderRadius:25}]}
                 />
               </TouchableOpacity>
             </View>

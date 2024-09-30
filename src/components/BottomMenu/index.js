@@ -56,7 +56,7 @@ const ButtonMenu = props => {
         <View style={styles.modalView}>
           <View style={styles.topSection}>
             <Image
-              source={require('../../assets/images/logo-full-image.png')}
+              source={require('../../assets/images/news-card-logo-full-black.png')}
               style={styles.logo}
             />
             <TouchableOpacity
