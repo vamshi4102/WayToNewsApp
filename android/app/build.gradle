@@ -74,12 +74,12 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "android.newscard.co"
+    namespace "com.worldnewscard.co"
     defaultConfig {
-        applicationId "android.newscard.co"
+        applicationId "com.worldnewscard.co"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 2
         versionName "1.0"
     }
     signingConfigs {
