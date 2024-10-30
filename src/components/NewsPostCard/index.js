@@ -20,6 +20,7 @@ import {
   EllipsisVerticalIcon,
   ShareIcon,
   LinkIcon,
+  ArrowPathIcon,
 } from 'react-native-heroicons/outline';
 import styles from './styles';
 import {colors, usedImages} from '../../utils/constants';
@@ -31,7 +32,13 @@ import ViewShot from 'react-native-view-shot';
 import Share from 'react-native-share';
 import {captureRef} from 'react-native-view-shot';
 import RNFS from 'react-native-fs';
-import { showErrorToast } from '../../utils/constants/app-alerts';
+import {showErrorToast} from '../../utils/constants/app-alerts';
+import {getNewsList} from '../../utils/redux/actions/common-actions';
+import {
+  setCurrentCategoryId,
+  setNewsList,
+} from '../../utils/redux/reducer/commonSlice';
+import {useDispatch} from 'react-redux';
 // import  ShareIcon  from '../../assets/svg/share-icon.svg';
 // import Svg from '../../assets/svg';
 // import CommentsList from './CommentsList';
@@ -62,7 +69,12 @@ const NewsPostCard = ({
 
   // const [modalVisible, setModalVisible] = useState(false);
   const [LocationModal, setLocationModal] = useState(false);
-
+  const dispatch = useDispatch();
+  const onReload = () => {
+    dispatch(setCurrentCategoryId(0));
+    dispatch(setNewsList([]));
+    dispatch(getNewsList(1, 0, []));
+  };
   const OnLikePress = () => {
     if (isDisliked) {
       setDisLikeCount(DisLikeCount - 1);
@@ -103,7 +115,8 @@ const NewsPostCard = ({
         // Share the image with a message
         await Share.open({
           url: `file://${path}`,
-          message: `Check this article: https://newscard.co/post/${postId}`,
+          message: `Check this article: https://newscard.co/post/${postId}
+Download app:https://play.google.com/store/apps/details?id=com.worldnewscard.co`,
         });
         setshowDownload(false);
       } catch (error) {
@@ -146,10 +159,10 @@ const NewsPostCard = ({
     }
   };
 
-  const showReportType = (id) => { 
+  const showReportType = id => {
     setshowReports(!showReports);
     setReportingPost(id);
-   }
+  };
 
   return (
     <ViewShot
@@ -217,6 +230,11 @@ const NewsPostCard = ({
                 />
               </TouchableOpacity>
             )} */}
+            <TouchableOpacity
+              style={styles.reloadButton}
+              onPress={() => onReload()}>
+              <ArrowPathIcon color={'black'} />
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.bottomRightButton}
               onPress={() => captureAndShare(News?.post_url)}>

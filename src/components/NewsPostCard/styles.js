@@ -109,6 +109,17 @@ const styles = StyleSheet.create({
     height: 22,
     margin: 7,
   },
+  reloadButton:{
+    width: 35,
+    height: 35,
+    margin: 7,
+    marginRight:0,
+    borderWidth: 1,
+    borderColor: "#f3f3f3",
+    borderRadius:25,
+    alignItems:'center',
+    justifyContent:'center'
+  },
   whatsappImage: {
     width: 34,
     height: 34,

@@ -30,6 +30,22 @@ const styles = StyleSheet.create({
     fontFamily: fonts.OpenSans300,
     color: 'gray',
   },
+  contactButtons:{
+    flexDirection:'row',
+    gap:10,
+    marginLeft:24
+  },  
+contactUs:{
+  borderWidth:1,
+  borderColor:"#4285F4",
+  paddingHorizontal:20,
+  paddingVertical:5,
+  borderRadius:25
+},
+contactUsBtn:{
+  fontFamily:fonts.OpenSans300,
+  color:"#4285F4",
+},
 });
 
 export default styles;

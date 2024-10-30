@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import SettingsCard from './settingCard';
 import {settingsPages} from '../../assets/data/settingsPages';
 import {colors} from '../../utils/constants';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
-import { OpenUrl } from '../../utils/functions';
+import {OpenUrl} from '../../utils/functions';
 import apiUrls from '../../utils/constants/api-urls';
 
 const SettingsScreen = () => {
@@ -23,7 +23,7 @@ const SettingsScreen = () => {
     console.warn(path);
     navigation.navigate('PageDetails', {page: path, pageName: title});
   };
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
@@ -40,7 +40,7 @@ const SettingsScreen = () => {
           <View style={styles.footer}>
             <SettingsCard
               title={'Our Website'}
-              onPress={() => OpenUrl("https://newscard.co/")}
+              onPress={() => OpenUrl('https://newscard.co/')}
             />
             <View style={styles.border} />
             <SettingsCard
@@ -49,28 +49,36 @@ const SettingsScreen = () => {
             />
             <Text style={styles.heading}>Follow Us on social media</Text>
             <View style={styles.socials}>
-              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl(" https://www.instagram.com/newscard_app?igsh=aHk5dzF1cWs3MWo2")}>
+              <TouchableOpacity
+                style={styles.socialButton}
+                onPress={() => OpenUrl(apiUrls.instagramUrl)}>
                 <Image
                   source={require('../../assets/images/instagram.png')}
                   style={styles.socialIcon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl("https://youtube.com/@newscardapp?si=rxGvwjeMBLGDEYuA")}>
+              <TouchableOpacity
+                style={styles.socialButton}
+                onPress={() => OpenUrl(apiUrls.youtubeUrl)}>
                 <Image
                   source={require('../../assets/images/youtube.png')}
                   style={styles.socialIcon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl("https://t.me/boost/newscardapp")}>
+              <TouchableOpacity
+                style={styles.socialButton}
+                onPress={() => OpenUrl(apiUrls.telegramUrl)}>
                 <Image
                   source={require('../../assets/images/telegram.png')}
                   style={styles.socialIcon}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton} onPress={()=>OpenUrl("https://x.com/Newscard_App?t=R_GEYGgwvPoTadQDzf_paA&s=08")}>
+              <TouchableOpacity
+                style={styles.socialButton}
+                onPress={() => OpenUrl(apiUrls.twitterUrl)}>
                 <Image
                   source={require('../../assets/images/x-logo-final.png')}
-                  style={[styles.socialIcon,{borderRadius:25}]}
+                  style={[styles.socialIcon, {borderRadius: 25}]}
                 />
               </TouchableOpacity>
             </View>
